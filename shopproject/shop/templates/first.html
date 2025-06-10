@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Магазин</title>
-    <style>
+   <style>
   html, body {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #76a7b5;
+    color: #fcf8ed;
+    scroll-behavior: smooth;
   }
+
   body {
     display: flex;
     flex-direction: column;
   }
+
   header {
-    background-color: #333;
-    padding: 15px;
-    color: white;
+    background-color: #5e909e;
+    padding: 20px;
+    color: #fcf8ed;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
+
+  h1 {
+    margin: 0 0 10px;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+    animation: fadeInDown 1s ease;
+  }
+
   nav ul {
     list-style: none;
     margin: 0;
@@ -26,39 +39,85 @@
     display: flex;
     gap: 20px;
   }
+
   nav ul li {
     position: relative;
   }
+
   nav a {
-    color: white;
+    color: #fcf8ed;
     text-decoration: none;
     padding: 8px 12px;
     display: block;
+    transition: background 0.3s ease, transform 0.2s;
+    border-radius: 4px;
   }
+
+  nav a:hover {
+    background-color: rgba(252, 248, 237, 0.15);
+    transform: scale(1.05);
+  }
+
   nav ul li:hover > ul {
     display: block;
+    animation: fadeIn 0.3s ease-in-out;
   }
+
   nav ul ul {
     display: none;
     position: absolute;
-    background-color: #444;
+    background-color: #5e909e;
     padding: 10px;
     top: 35px;
     left: 0;
     z-index: 1000;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
+
   nav ul ul li {
-    width: 150px;
+    width: 160px;
   }
+
   main {
     flex: 1;
     padding: 30px;
+    animation: fadeInMain 1s ease;
   }
+
   footer {
-    background-color: #333;
-    color: white;
+    background-color: #5e909e;
+    color: #fcf8ed;
     text-align: center;
     padding: 15px;
+    font-size: 14px;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInMain {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 

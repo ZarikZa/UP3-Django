@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удалить: {{ productss.name }}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #76a7b5;
+            color: #fcf8ed;
+        }
+
+        .card {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #5e909e;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #fcf8ed;
+            color: #5e909e;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #f2e9d8;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #fcf8ed;
+            text-decoration: underline;
+        }
+        .nav-btn {
+            padding: 8px 15px;
+            background-color: #fcf8ed;
+            color: #76a7b5;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #f2e9d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+          {% if wishlist.product.photo %}
+             <img src="{{ wishlist.product.photo.url }}" alt="{{ wishlist.product.name }}" class="category-image">
+         {% else %}
+             <div class="category-image" style="background-color: #fcf8ed20; display: flex; align-items: center; justify-content: center;">
+                 <span>Нет изображения</span>
+             </div>
+         {% endif %}
+        <h1>Название: {{ wishlist.product.name }}</h1>
+        <h2>Описание: {{ wishlist.product.disctiption }}</h2>
+        <h2>Цена: {{ wishlist.product.price }} руб.</h2>
+        <h2>Дата создания: {{ wishlist.product.create_date }}</h2>
+        <h2>Категория: {{ wishlist.product.category }}</h2>
+        <h2>Страна производства: {{ wishlist.product.country }}</h2>
+        <h2>Бренд: {{ wishlist.product.brand }}</h2>
+        <h1>ФИО Клиента: {{ wishlist.client.clientName }} {{ wishlist.client.clientSurname }} {{ wishlist.client.clientMiddleName }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Подтвердить удаление</button>
+        </form>
+        <a class="nav-btn" href="{% url 'wishlist_list_view' %}">Назад</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.pk %}Редактировать позицию {% else %} Добавить позицию {% endif %}</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #76a7b5;
+            color: #fcf8ed;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #5e909e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            background-color: #fcf8ed;
+            color: #5e909e;
+            font-weight: bold;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #f2e9d8;
+        }
+         .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 8px 15px;
+            background-color: #fcf8ed;
+            color: #76a7b5;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: #f2e9d8;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>{% if form.instance.pk %}Редактировать позицию {% else %} Добавить позицию {% endif %}</h1>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Сохранить</button>
+            <a class="nav-btn" href="{% url 'productss_list_view' %}">Назад</a>
+
+        </form>
+    </div>
+</body>
+</html>

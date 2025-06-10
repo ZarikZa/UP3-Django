@@ -51,7 +51,7 @@
     width: 150px;
   }
   main {
-    flex: 1; /* Растягиваем на доступную высоту */
+    flex: 1;
     padding: 30px;
   }
   footer {
@@ -60,8 +60,41 @@
     text-align: center;
     padding: 15px;
   }
+  .category-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .category-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .category-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+  .category-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  h2 {
+    text-align: center;
+  }
 </style>
-
 </head>
 <body>
 <header>
@@ -90,13 +123,18 @@
 
 <main>
   <h2>Категории товаров</h2>
-  <ul>
-    <li>Электроника</li>
-    <li>Одежда</li>
-    <li>Товары для дома</li>
-  </ul>
+  <div class="category-cards">
+    <a href="{% url 'products_view' %}" class="category-card">
+      <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3" alt="Одежда">
+      <h3>Одежда</h3>
+    </a>
+    <a href="{% url 'products_view' %}" class="category-card">
+      <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92" alt="Товары для дома">
+      <h3>Товары для дома</h3>
+    </a>
+  </div>
 </main>
 
-<footer>&copy; 2025 Магазин. Все права защищены.</footer>
+<footer>© 2025 Магазин. Все права защищены.</footer>
 </body>
 </html>

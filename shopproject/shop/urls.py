@@ -11,4 +11,9 @@ urlpatterns = [
     path('products/', products_view, name='products_view'),
     path('categories/', categories_view, name='categories_view'),
     path('cart/', cart_view, name='cart_view'),
+    path('clothes/', ClothesListView.as_view(), name='clothes_list_view'),
+    path('clothes/<int:pk>/', ClothesDetailView.as_view(), name='clothes_detail_view'),
+    path('clothes/create/', ClothesCreateView.as_view(), name='clothes_create_view'),
+    path('clothes/<int:pk>/update/', ClothesUpdateView.as_view(), name='clothes_update_view'),
+    path('clothes/<int:pk>/delete/', ClothesDeleteView.as_view(), name='clothes_delete_view'),
 ]

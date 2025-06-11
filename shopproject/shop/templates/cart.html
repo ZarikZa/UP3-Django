@@ -1,98 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Корзина</title>
-  <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background-color: #333;
-    padding: 15px;
-    color: white;
-  }
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
-  nav ul li {
-    position: relative;
-  }
-  nav a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    display: block;
-  }
-  nav ul li:hover > ul {
-    display: block;
-  }
-  nav ul ul {
-    display: none;
-    position: absolute;
-    background-color: #444;
-    padding: 10px;
-    top: 35px;
-    left: 0;
-    z-index: 1000;
-  }
-  nav ul ul li {
-    width: 150px;
-  }
-  main {
-    flex: 1;
-    padding: 30px;
-  }
-  footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-  }
-</style>
+{% extends 'base.html' %}
+{% load static %}
 
-</head>
-<body>
-<header>
-   <h1>Наш магазин</h1>
-  <nav>
-    <ul>
-      <li><a href="{% url 'first_view' %}">Главная</a></li>
-      <li>
-        <a href="{% url 'second_view' %}">О компании</a>
-        <ul>
-          <li><a href="{% url 'contacts_view' %}">Контакты</a></li>
-          <li><a href="{% url 'location_view' %}">Как нас найти</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="{% url 'products_view' %}">Товары</a>
-        <ul>
-          <li><a href="{% url 'categories_view' %}">Категории</a></li>
-          <li><a href="{% url 'products_view' %}">Все товары</a></li>
-        </ul>
-      </li>
-      <li><a href="{% url 'cart_view' %}">Корзина</a></li>
-    </ul>
-  </nav>
-</header>
+{% block title_name %}
+Корзина
+{% endblock %}
 
-<main>
+{% block content %}
+
+<div class="cart-section">
   <h2>Ваша корзина</h2>
-  <p>Корзина пуста.</p>
-</main>
 
-<footer>&copy; 2025 Магазин. Все права защищены.</footer>
-</body>
-</html>
+
+  <p>Похоже, вы ещё ничего не добавили. Начните с выбора товаров в каталоге.</p>
+
+  <a href="{% url 'products_view' %}" class="btn-shop">Перейти в каталог</a>
+</div>
+{% endblock %}

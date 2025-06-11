@@ -1,0 +1,25 @@
+{% load static %}
+<header>
+      <h1>OVETA</h1>
+    <img src="{% static 'images/logo.jpg' %}" alt="Логотип" style="height:50px;">
+  <nav>
+    <ul>
+      <li><a href="{% url 'first_view' %}">Главная</a></li>
+      <li>
+        <a href="{% url 'second_view' %}">О компании</a>
+        <ul>
+          <li><a href="{% url 'contacts_view' %}">Контакты</a></li>
+          <li><a href="{% url 'location_view' %}">Как нас найти</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="{% url 'products_view' %}">Товары</a>
+        <ul>
+          <li><a href="{% url 'categories_view' %}">Категории</a></li>
+          <li><a href="{% url 'products_view' %}">Все товары</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'cart_view' %}">Корзина</a></li>
+    </ul>
+  </nav>
+</header>

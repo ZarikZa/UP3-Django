@@ -1,161 +1,39 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Магазин</title>
-   <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #76a7b5;
-    color: #fcf8ed;
-    scroll-behavior: smooth;
-  }
+{% extends 'base.html' %}
+{% load static %}
 
-  body {
-    display: flex;
-    flex-direction: column;
-  }
+{% block title_name %}
+Главная
+{% endblock %}
 
-  header {
-    background-color: #5e909e;
-    padding: 20px;
-    color: #fcf8ed;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
+{% block content %}
+<div class="hero">
+  <h1>Добро пожаловать в наш интернет-магазин!</h1>
+  <p>Качественные товары, лучшие цены и забота о каждом клиенте — всё, что нужно для комфортных покупок.</p>
+  <a href="{% url 'products_view' %}" class="btn-main">Перейти к товарам</a>
+</div>
 
-  h1 {
-    margin: 0 0 10px;
-    font-size: 2.2em;
-    letter-spacing: 1px;
-    animation: fadeInDown 1s ease;
-  }
+<style>
 
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
-
-  nav ul li {
-    position: relative;
-  }
-
-  nav a {
-    color: #fcf8ed;
-    text-decoration: none;
-    padding: 8px 12px;
-    display: block;
-    transition: background 0.3s ease, transform 0.2s;
-    border-radius: 4px;
-  }
-
-  nav a:hover {
-    background-color: rgba(252, 248, 237, 0.15);
-    transform: scale(1.05);
-  }
-
-  nav ul li:hover > ul {
-    display: block;
-    animation: fadeIn 0.3s ease-in-out;
-  }
-
-  nav ul ul {
-    display: none;
-    position: absolute;
-    background-color: #5e909e;
-    padding: 10px;
-    top: 35px;
-    left: 0;
-    z-index: 1000;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  }
-
-  nav ul ul li {
-    width: 160px;
-  }
-
-  main {
-    flex: 1;
-    padding: 30px;
-    animation: fadeInMain 1s ease;
-  }
-
-  footer {
-    background-color: #5e909e;
-    color: #fcf8ed;
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeInMain {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 </style>
 
-</head>
-<body>
+<div class="features">
+  <div class="feature-item">
+    <h5>🚚 Быстрая доставка</h5>
+    <p>Отправляем заказы в течение 24 часов по всей России.</p>
+  </div>
+  <div class="feature-item">
+    <h5>✔️ Гарантия качества</h5>
+    <p>Только проверенные поставщики и товары с гарантией.</p>
+  </div>
+  <div class="feature-item">
+    <h5>📞 Поддержка 24/7</h5>
+    <p>Наши менеджеры всегда готовы помочь вам с выбором и заказом.</p>
+  </div>
+</div>
 
-<header>
-      <h1>Наш магазин</h1>
-  <nav>
-    <ul>
-      <li><a href="{% url 'first_view' %}">Главная</a></li>
-      <li>
-        <a href="{% url 'second_view' %}">О компании</a>
-        <ul>
-          <li><a href="{% url 'contacts_view' %}">Контакты</a></li>
-          <li><a href="{% url 'location_view' %}">Как нас найти</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="{% url 'products_view' %}">Товары</a>
-        <ul>
-          <li><a href="{% url 'categories_view' %}">Категории</a></li>
-          <li><a href="{% url 'products_view' %}">Все товары</a></li>
-        </ul>
-      </li>
-      <li><a href="{% url 'cart_view' %}">Корзина</a></li>
-    </ul>
-  </nav>
-</header>
 
-<main>
-    <h2>Главная страница</h2>
-    <p>Добро пожаловать в наш интернет-магазин! Здесь вы найдёте лучшие товары по выгодным ценам.</p>
-</main>
-
-<footer>
-    &copy; 2025 Магазин. Все права защищены.
-</footer>
-
-</body>
-</html>
+<div style="text-align: center; margin-bottom: 40px;">
+  <h4>Готовы начать покупки?</h4>
+  <a href="{% url 'products_view' %}" class="btn-main" style="margin-top: 15px;">Смотреть каталог</a>
+</div>
+{% endblock %}

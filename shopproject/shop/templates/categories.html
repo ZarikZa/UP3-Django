@@ -1,127 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Категории</title>
- <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background-color: #333;
-    padding: 15px;
-    color: white;
-  }
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
-  nav ul li {
-    position: relative;
-  }
-  nav a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    display: block;
-  }
-  nav ul li:hover > ul {
-    display: block;
-  }
-  nav ul ul {
-    display: none;
-    position: absolute;
-    background-color: #444;
-    padding: 10px;
-    top: 35px;
-    left: 0;
-    z-index: 1000;
-  }
-  nav ul ul li {
-    width: 150px;
-  }
-  main {
-    flex: 1;
-    padding: 30px;
-  }
-  footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-  }
-  .category-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .category-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 200px;
-    text-align: center;
-    padding: 20px;
-    text-decoration: none;
-    color: #333;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-  .category-card h3 {
-    margin: 10px 0;
-    font-size: 1.2em;
-  }
-  .category-card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  h2 {
-    text-align: center;
-  }
-</style>
-</head>
-<body>
-<header>
-   <h1>Наш магазин</h1>
-  <nav>
-    <ul>
-      <li><a href="{% url 'first_view' %}">Главная</a></li>
-      <li>
-        <a href="{% url 'second_view' %}">О компании</a>
-        <ul>
-          <li><a href="{% url 'contacts_view' %}">Контакты</a></li>
-          <li><a href="{% url 'location_view' %}">Как нас найти</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="{% url 'products_view' %}">Товары</a>
-        <ul>
-          <li><a href="{% url 'categories_view' %}">Категории</a></li>
-          <li><a href="{% url 'products_view' %}">Все товары</a></li>
-        </ul>
-      </li>
-      <li><a href="{% url 'cart_view' %}">Корзина</a></li>
-    </ul>
-  </nav>
-</header>
+{% extends 'base.html' %}
+{% load static %}
 
-<main>
+{% block title_name %}
+Все товары
+{% endblock %}
+
+{% block content %}
   <h2>Категории товаров</h2>
   <div class="category-cards">
     <a href="{% url 'products_view' %}" class="category-card">
@@ -133,8 +17,5 @@
       <h3>Товары для дома</h3>
     </a>
   </div>
-</main>
 
-<footer>© 2025 Магазин. Все права защищены.</footer>
-</body>
-</html>
+{% endblock %}

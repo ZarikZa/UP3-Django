@@ -13,12 +13,16 @@ class ProductsForm(forms.ModelForm):
         #Все поля которые нужно заполнять
         fields = ['name', 'disctiption', 'price', 'photo', 'category', 'country', 'brand']
 
-
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         # Все поля которые нужно заполнять
         fields = ['name', 'disctiption', 'photo']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'disctiption': forms.Textarea(attrs={'class': 'form-control'}),
+            'photo': forms.FileInput(attrs={'class': 'form-control-file'}),
+        }
 
 class CountryProivodstvaForm(forms.ModelForm):
     class Meta:

@@ -1,102 +1,32 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Все товары</title>
-  <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background-color: #333;
-    padding: 15px;
-    color: white;
-  }
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
-  nav ul li {
-    position: relative;
-  }
-  nav a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-    display: block;
-  }
-  nav ul li:hover > ul {
-    display: block;
-  }
-  nav ul ul {
-    display: none;
-    position: absolute;
-    background-color: #444;
-    padding: 10px;
-    top: 35px;
-    left: 0;
-    z-index: 1000;
-  }
-  nav ul ul li {
-    width: 150px;
-  }
-  main {
-    flex: 1;
-    padding: 30px;
-  }
-  footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px;
-  }
-</style>
+{% extends 'base.html' %}
+{% load static %}
 
-</head>
-<body>
-<header>
-    <h1>Наш магазин</h1>
-  <nav>
-    <ul>
-      <li><a href="{% url 'first_view' %}">Главная</a></li>
-      <li>
-        <a href="{% url 'second_view' %}">О компании</a>
-        <ul>
-          <li><a href="{% url 'contacts_view' %}">Контакты</a></li>
-          <li><a href="{% url 'location_view' %}">Как нас найти</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="{% url 'products_view' %}">Товары</a>
-        <ul>
-          <li><a href="{% url 'categories_view' %}">Категории</a></li>
-          <li><a href="{% url 'products_view' %}">Все товары</a></li>
-        </ul>
-      </li>
-      <li><a href="{% url 'cart_view' %}">Корзина</a></li>
-    </ul>
-  </nav>
-</header>
+{% block title_name %}
+Все товары
+{% endblock %}
 
-<main>
-  <h2>Все товары</h2>
-  <ul>
-    <li>Товар 1</li>
-    <li>Товар 2</li>
-    <li>Товар 3</li>
-  </ul>
-</main>
+{% block content %}
+  <h2 class="mb-4">Каталог товаров</h2>
+  <div class="product-cards">
+    <div class="product-card">
+      <img src="{% static 'images/test_product.jpg' %}" alt="Товар 1">
+      <div class="product-card-body">
+        <h3>Товар 1</h3>
+        <div class="product-description">Качественный и надёжный товар. Подходит для ежедневного использования.</div>
+        <div class="product-price">1 990 ₽</div>
+        <a href="#" class="btn-buy">Добавить в корзину</a>
+      </div>
+    </div>
 
-<footer>&copy; 2025 Магазин. Все права защищены.</footer>
-</body>
-</html>
+    <div class="product-card">
+      <img src="{% static 'images/test_product.jpg' %}" alt="Товар 2">
+      <div class="product-card-body">
+        <h3>Товар 2</h3>
+        <div class="product-description">Практичный и стильный товар, идеально подойдёт в подарок.</div>
+        <div class="product-price">2 590 ₽</div>
+        <a href="#" class="btn-buy">Добавить в корзину</a>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,67 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Удалить: {{ brands.name }}</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 40px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #76a7b5;
-            color: #fcf8ed;
-        }
+{% extends 'base_for_others_CRUD.html' %}
+{% load static %}
 
-        .card {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: #5e909e;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
+{% block title_name %}
+Удаление бренда
+{% endblock %}
 
-        h1 {
-            margin-bottom: 30px;
-        }
-
-        button {
-            background-color: #fcf8ed;
-            color: #5e909e;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #f2e9d8;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            color: #fcf8ed;
-            text-decoration: underline;
-        }
-        .nav-btn {
-            padding: 8px 15px;
-            background-color: #fcf8ed;
-            color: #76a7b5;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background-color: #f2e9d8;
-        }
-    </style>
-</head>
-<body>
+{% block content %}
     <div class="card">
         <h1>Удалить "{{ brands.name }}"?</h1>
 
@@ -72,5 +16,4 @@
 
         <a class="nav-btn" href="{% url 'brands_list_view' %}">Назад</a>
     </div>
-</body>
-</html>
+{% endblock %}

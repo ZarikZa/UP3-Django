@@ -8,22 +8,15 @@
         <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     {% endblock %}
    {% block style %}
-       {% include '_inc/styles.html' %}
+       {% include '_inc/styles_for_others.html' %}
    {% endblock %}
-
 </head>
 <body>
     {% block body %}
-        {% block header %}
-            {% include '_inc/_header.html' %}
-        {% endblock %}
         <main>
             {% block content %}
             {% endblock %}
         </main>
-        {% block footer %}
-             {% include '_inc/_footer.html' %}
-        {% endblock %}
     {% endblock %}
 </body>
 </html>

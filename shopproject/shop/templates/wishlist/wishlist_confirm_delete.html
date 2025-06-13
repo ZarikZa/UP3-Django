@@ -1,10 +1,15 @@
-{% extends 'base_for_others_CRUD.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title_name %}
 Удаление изранного
 {% endblock %}
-
+{% endblock %}
+ {% block style %}
+       {% include '_inc/styles_for_others.html' %}
+ {% endblock %}
+{% block header %}
+{% endblock %}
 {% block content %}
     <div class="card">
           {% if wishlist.product.photo %}
@@ -28,4 +33,6 @@
         </form>
         <a class="nav-btn" href="{% url 'wishlist_list_view' %}">Назад</a>
     </div>
+    {% block footer %}
+      {% endblock %}
 {% endblock %}

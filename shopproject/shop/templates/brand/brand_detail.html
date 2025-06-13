@@ -1,13 +1,19 @@
-{% extends 'base_for_others_CRUD.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title_name %}
 {{ brands.name }}
 {% endblock %}
-
+ {% block style %}
+       {% include '_inc/styles_for_others.html' %}
+ {% endblock %}
+{% block header %}
+{% endblock %}
 {% block content %}
     <div class="card">
         <h1>{{ brands.name }}</h1>
         <a class="back-link" href="{% url 'brands_list_view' %}">← Назад к списку</a>
     </div>
+     {% block footer %}
+      {% endblock %}
 {% endblock %}

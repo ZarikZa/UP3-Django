@@ -1,10 +1,14 @@
-{% extends 'base_for_others_CRUD.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title_name %}
 {% if form.instance.pk %}Редактировать позицию {% else %} Добавить позицию {% endif %}
 {% endblock %}
-
+ {% block style %}
+       {% include '_inc/styles_for_others.html' %}
+ {% endblock %}
+{% block header %}
+{% endblock %}
 {% block content %}
     <div class="form-container">
          <h1>{% if form.instance.pk %}Редактировать позицию {% else %} Добавить позицию {% endif %}</h1>
@@ -18,4 +22,6 @@
 
         </form>
     </div>
+     {% block footer %}
+      {% endblock %}
 {% endblock %}

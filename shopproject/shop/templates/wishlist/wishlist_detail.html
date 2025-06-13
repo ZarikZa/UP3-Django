@@ -1,10 +1,14 @@
-{% extends 'base_for_others_CRUD.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title_name %}
 {{ wishlist.product.name }}
 {% endblock %}
-
+ {% block style %}
+       {% include '_inc/styles_for_others.html' %}
+ {% endblock %}
+{% block header %}
+{% endblock %}
 {% block content %}
     <div class="card">
          {% if wishlist.product.photo %}
@@ -24,4 +28,6 @@
         <h1>ФИО Клиента: {{ position.client.clientName }} {{ position.client.clientSurname }} {{ position.client.clientMiddleName }}</h1>
         <a class="back-link" href="{% url 'wishlist_list_view' %}">← Назад к списку</a>
     </div>
+      {% block footer %}
+      {% endblock %}
 {% endblock %}

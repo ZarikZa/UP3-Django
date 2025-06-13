@@ -1,11 +1,15 @@
-{% extends 'base_for_list.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title_name %}
 Страны
 {% endblock %}
-
-
+{% block style %}
+    {% include '_inc/styles_list.html' %}
+{% endblock %}
+  {% block header %}
+      {% include '_inc/_header_list.html' %}
+  {% endblock %}
 {% block content %}
 
     <h1>Страны</h1>
@@ -28,4 +32,6 @@
             <li style="color: #fefefe; font-size: 1.2em;">Пока нет добавленных позиций.</li>
         {% endfor %}
     </ul>
+      {% block footer %}
+     {% endblock %}
 {% endblock %}

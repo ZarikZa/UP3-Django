@@ -19,15 +19,6 @@ def contacts_view(request):
 def location_view(request):
     return render(request, 'location.html')
 
-class ProductListView_Main(ListView):
-    model = Products
-    template_name = 'products.html'
-    context_object_name = 'productss'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form_basket'] = BasketAddProductForm()
-        return context
 
 
 class CategoryListViewMain(ListView):
@@ -164,6 +155,16 @@ class CountryDeleteView(DeleteView):
 #
 #Product
 #
+class ProductListView_Main(ListView):
+    model = Products
+    template_name = 'products.html'
+    context_object_name = 'productss'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_basket'] = BasketAddProductForm()
+        return context
+
 
 class ProductListView(ListView):
     model = Products

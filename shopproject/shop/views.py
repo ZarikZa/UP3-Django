@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
+from basket.forms import BasketAddProductForm
+from django.contrib.auth import login, logout
+from django.shortcuts import get_object_or_404
 
 def first_view(request):
     return render(request, 'first.html')
@@ -16,14 +19,24 @@ def contacts_view(request):
 def location_view(request):
     return render(request, 'location.html')
 
-def products_view(request):
-    return render(request, 'products.html')
+class ProductListView_Main(ListView):
+    model = Products
+    template_name = 'products.html'
+    context_object_name = 'productss'
 
-def categories_view(request):
-    return render(request, 'categories.html')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_basket'] = BasketAddProductForm()
+        return context
+
+
+class CategoryListViewMain(ListView):
+    model = Category
+    template_name = 'categories.html'
+    context_object_name = 'categories'
 
 def cart_view(request):
-    return render(request, 'cart.html')
+    return render(request, 'basket/basket_detail.html')
 
 class ClothesListView(ListView):
     model = Clothes
@@ -157,10 +170,43 @@ class ProductListView(ListView):
     template_name = 'productss/productss_list.html'
     context_object_name = 'productss'
 
+
+class ProductListViewSort(ListView):
+    model = Products
+    template_name = 'products.html'
+    context_object_name = 'productss'
+
+    def get_queryset(self):
+        category_id = self.kwargs.get('category')
+        return Products.objects.filter(category__id=category_id)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = get_object_or_404(Category, pk=self.kwargs.get('category'))
+        context['category'] = category
+        context['form_basket'] = BasketAddProductForm()
+        return context
+
+
 class ProductDetailView(DetailView):
     model = Products
     template_name = 'productss/productss_detail.html'
     context_object_name = 'productss'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_basket'] = BasketAddProductForm()
+        return context
+
+class ProductDetailViewMain(DetailView):
+    model = Products
+    template_name = 'product_detail_main.html'
+    context_object_name = 'productss'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_basket'] = BasketAddProductForm()
+        return context
 
 class ProductCreateView(CreateView):
     model = Products
@@ -210,3 +256,31 @@ class WishlistDeleteView(DeleteView):
     context_object_name = 'wishlist'
     template_name = 'wishlist/wishlist_confirm_delete.html'
     success_url = reverse_lazy('wishlist_list_view')
+
+def login_user(request):
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+            return redirect('products_view')
+    else:
+        form = LoginForm()
+    return render(request, 'auth/login.html', {'form': form})
+
+def registration_user(request):
+    if request.method == 'POST':
+        form = RegistrationForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.save())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+            return redirect('products_view')
+    else:
+        form = RegistrationForm()
+    return render(request, 'auth/registration.html', {'form': form})
+
+def logout_user(request):
+    logout(request)
+    return redirect('products_view')

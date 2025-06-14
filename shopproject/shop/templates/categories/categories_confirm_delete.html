@@ -10,6 +10,7 @@
 {% block header %}
 {% endblock %}
 {% block content %}
+    {% if user.is_authenticated and user.is_staff %}
     <div class="card">
         <h1>Удалить "{{ categories.name }}"?</h1>
 
@@ -22,5 +23,8 @@
     </div>
      {% block footer %}
       {% endblock %}
+      {% else %}
+        <h1>Это страницы админа</h1>
+    {% endif %}
 {% endblock %}
 

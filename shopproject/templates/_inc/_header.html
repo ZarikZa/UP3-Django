@@ -1,7 +1,6 @@
 {% load static %}
 <header>
       <h1>OVETA</h1>
-    <img src="{% static 'images/logo.jpg' %}" alt="Логотип" style="height:50px;">
   <nav>
     <ul>
       <li><a href="{% url 'first_view' %}">Главная</a></li>
@@ -19,7 +18,16 @@
           <li><a href="{% url 'products_view' %}">Все товары</a></li>
         </ul>
       </li>
-      <li><a href="{% url 'cart_view' %}">Корзина</a></li>
+      <li><a href="{% url 'basket_detail' %}">Корзина</a></li>
+        {% if request.user.is_authenticated %}
+          <li><a href="{% url 'logout_user' %}">Выйти</a></li>
+        {% else %}
+            <a href="{% url 'login_user' %}">Авторизация</a>
+            <li><a href="{% url 'registration_user' %}">Зарегестрироваться</a></li>
+        {% endif %}
+        {% if user.is_authenticated and user.is_staff %}
+            <li><a href="{% url 'brands_list_view' %}">Администратор</a></li>
+        {% endif %}
     </ul>
   </nav>
 </header>

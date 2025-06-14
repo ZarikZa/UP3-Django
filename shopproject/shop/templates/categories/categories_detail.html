@@ -10,6 +10,7 @@
 {% block header %}
 {% endblock %}
 {% block content %}
+    {% if user.is_authenticated and user.is_staff %}
     <div class="card">
          {% if categories.photo %}
              <img src="{{ categories.photo.url }}" alt="{{ categories.name }}" class="category-image">
@@ -24,4 +25,7 @@
     </div>
      {% block footer %}
       {% endblock %}
+      {% else %}
+        <h1>Это страницы админа</h1>
+    {% endif %}
 {% endblock %}

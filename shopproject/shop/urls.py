@@ -2,15 +2,22 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import *
-
+from basket.views import *
 urlpatterns = [
+    path('', first_view, name='first_view'),
     path('first/', first_view, name='first_view'),
     path('second/', second_view, name='second_view'),
     path('contacts/', contacts_view, name='contacts_view'),
     path('location/', location_view, name='location_view'),
-    path('products/', products_view, name='products_view'),
-    path('category/', categories_view, name='categories_view'),
-    path('cart/', cart_view, name='cart_view'),
+    path('products/', ProductListView_Main.as_view(), name='products_view'),
+    path('category/', CategoryListViewMain.as_view(), name='categories_view'),
+    path('category/<str:category>', ProductListViewSort.as_view(), name='categories_sort_view'),
+    path('basket/', basket_detail, name='basket_detail'),
+    path('products/<int:pk>', ProductDetailViewMain.as_view(), name='product_detail_view'),
+
+    path('login/', login_user, name='login_user'),
+    path('registration/', registration_user, name='registration_user'),
+    path('logout/', logout_user, name='logout_user'),
 
     path('clothes/', ClothesListView.as_view(), name='clothes_list_view'),
     path('clothes/<int:pk>/', ClothesDetailView.as_view(), name='clothes_detail_view'),

@@ -7,15 +7,14 @@
 
 {% block content %}
   <h2>Категории товаров</h2>
+
   <div class="category-cards">
-    <a href="{% url 'products_view' %}" class="category-card">
-      <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3" alt="Одежда">
-      <h3>Одежда</h3>
-    </a>
-    <a href="{% url 'products_view' %}" class="category-card">
-      <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92" alt="Товары для дома">
-      <h3>Товары для дома</h3>
-    </a>
+      {% for item in categories %}
+        <a href="{% url 'categories_sort_view' item.pk%}" class="category-card">
+          <img src="{{ item.photo.url }} " alt="{{item.name}}">
+          <h3>{{item.name}}</h3>
+        </a>
+      {% endfor %}
   </div>
 
 {% endblock %}

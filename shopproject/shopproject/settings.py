@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    'basket',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-        'NAME': 'UP',
+        'NAME': 'UP3',
         'USER': 'postgres',
         'PASSWORD': '1'
     }
@@ -121,10 +122,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '../static')
+    os.path.join(BASE_DIR, 'static')
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
+BASKET_SESSION_ID = 'basket'
+
+LOGIN_URL = '/login/'

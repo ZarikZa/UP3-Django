@@ -14,29 +14,32 @@ class ClothesAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(CountryProivodstva)
-class CategoryAdmin(admin.ModelAdmin):
+class CountryProivodstvaAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Brand)
-class CollectionAdmin(admin.ModelAdmin):
+class BrandAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Products)
-class ClothesAdmin(admin.ModelAdmin):
+class ProductsAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Clients)
-class CategoryAdmin(admin.ModelAdmin):
+class ClientsAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Review)
-class CollectionAdmin(admin.ModelAdmin):
+class ReviewAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Cart)
-class ClothesAdmin(admin.ModelAdmin):
+@admin.register(CartItem)
+class CartItemAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Bill)
-class ClothesAdmin(admin.ModelAdmin):
+class BillAdmin(admin.ModelAdmin):
+    pass
+@admin.register(Pos_order)
+class Pos_orderAdmin(admin.ModelAdmin):
     pass

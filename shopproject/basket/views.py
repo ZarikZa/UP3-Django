@@ -34,6 +34,7 @@ def basket_add(request, product_id):
     return redirect('basket_detail')
 
 # @permision_required('shop.add_pos_order') для проверки прав доступа в [перчисляю несколько прав]
+
 @login_required
 def basket_buy(request):
     basket = Basket(request)

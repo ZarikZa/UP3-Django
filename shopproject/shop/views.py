@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
@@ -61,29 +63,34 @@ class ClothesDeleteView(DeleteView):
 #Brand
 #
 
-class BrandListView(ListView):
+class BrandListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.view_brand'
     model = Brand
     template_name = 'brand/brand_list.html'
     context_object_name = 'brands'
 
-class BrandDetailView(DetailView):
+class BrandDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.view_brand'
     model = Brand
     template_name = 'brand/brand_detail.html'
     context_object_name = 'brands'
 
-class BrandCreateView(CreateView):
+class BrandCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.add_brand'
     model = Brand
     form_class = BrandForm
     template_name = 'brand/brand_form.html'
     success_url = reverse_lazy('brands_list_view')
 
-class BrandUpdateView(UpdateView):
+class BrandUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.change_brand'
     model = Brand
     form_class = BrandForm
     template_name = 'brand/brand_form.html'
     success_url = reverse_lazy('brands_list_view')
 
-class BrandDeleteView(DeleteView):
+class BrandDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_brand'
     model = Brand
     context_object_name = 'brands'
     template_name = 'brand/brand_confirm_delete.html'
@@ -93,29 +100,34 @@ class BrandDeleteView(DeleteView):
 #Category
 #
 
-class CategoryListView(ListView):
+class CategoryListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.view_category'
     model = Category
     template_name = 'categories/categories_list.html'
     context_object_name = 'categories'
 
-class CategoryDetailView(DetailView):
+class CategoryDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.view_category'
     model = Category
     template_name = 'categories/categories_detail.html'
     context_object_name = 'categories'
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.add_category'
     model = Category
     form_class = CategoryForm
     template_name = 'categories/categories_form.html'
     success_url = reverse_lazy('categories_list_view')
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.change_category'
     model = Category
     form_class = CategoryForm
     template_name = 'categories/categories_form.html'
     success_url = reverse_lazy('categories_list_view')
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.dalete_category'
     model = Category
     context_object_name = 'categories'
     template_name = 'categories/categories_confirm_delete.html'
@@ -124,29 +136,34 @@ class CategoryDeleteView(DeleteView):
 #Country
 #
 
-class CountryListView(ListView):
+class CountryListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.view_country'
     model = CountryProivodstva
     template_name = 'countries/countries_list.html'
     context_object_name = 'countries'
 
-class CountryDetailView(DetailView):
+class CountryDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.view_country'
     model = CountryProivodstva
     template_name = 'countries/countries_detail.html'
     context_object_name = 'countries'
 
-class CountryCreateView(CreateView):
+class CountryCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.add_country'
     model = CountryProivodstva
     form_class = CountryProivodstvaForm
     template_name = 'countries/countries_form.html'
     success_url = reverse_lazy('countries_list_view')
 
-class CountryUpdateView(UpdateView):
+class CountryUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.change_country'
     model = CountryProivodstva
     form_class = CountryProivodstvaForm
     template_name = 'countries/countries_form.html'
     success_url = reverse_lazy('countries_list_view')
 
-class CountryDeleteView(DeleteView):
+class CountryDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_country'
     model = CountryProivodstva
     context_object_name = 'countries'
     template_name = 'countries/countries_confirm_delete.html'
@@ -166,7 +183,8 @@ class ProductListView_Main(ListView):
         return context
 
 
-class ProductListView(ListView):
+class ProductListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.view_product'
     model = Products
     template_name = 'productss/productss_list.html'
     context_object_name = 'productss'
@@ -189,7 +207,8 @@ class ProductListViewSort(ListView):
         return context
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.view_product'
     model = Products
     template_name = 'productss/productss_detail.html'
     context_object_name = 'productss'
@@ -209,19 +228,22 @@ class ProductDetailViewMain(DetailView):
         context['form_basket'] = BasketAddProductForm()
         return context
 
-class ProductCreateView(CreateView):
+class ProductCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.add_product'
     model = Products
     form_class = ProductsForm
     template_name = 'productss/productss_form.html'
     success_url = reverse_lazy('productss_list_view')
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.change_product'
     model = Products
     form_class = ProductsForm
     template_name = 'productss/productss_form.html'
     success_url = reverse_lazy('productss_list_view')
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_product'
     model = Products
     context_object_name = 'productss'
     template_name = 'productss/productss_confirm_delete.html'
@@ -230,29 +252,34 @@ class ProductDeleteView(DeleteView):
 #Wishlist
 #
 
-class WishlistListView(ListView):
+class WishlistListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.view_wishlist'
     model = Wishlist
     template_name = 'wishlist/wishlist_list.html'
     context_object_name = 'wishlist'
 
-class WishlistDetailView(DetailView):
+class WishlistDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.view_wishlist'
     model = Wishlist
     template_name = 'wishlist/wishlist_detail.html'
     context_object_name = 'wishlist'
 
-class WishlistCreateView(CreateView):
+class WishlistCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.add_wishlist'
     model = Wishlist
     form_class = WishlistForm
     template_name = 'wishlist/wishlist_form.html'
     success_url = reverse_lazy('wishlist_list_view')
 
-class WishlistUpdateView(UpdateView):
+class WishlistUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.change_wishlist'
     model = Wishlist
     form_class = WishlistForm
     template_name = 'wishlist/wishlist_form.html'
     success_url = reverse_lazy('wishlist_list_view')
 
-class WishlistDeleteView(DeleteView):
+class WishlistDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_wishlist'
     model = Wishlist
     context_object_name = 'wishlist'
     template_name = 'wishlist/wishlist_confirm_delete.html'
